@@ -6,8 +6,16 @@ import {Script, console2, stdJson} from "forge-std/Script.sol";
 abstract contract BaseScript is Script {
     using stdJson for string;
 
+    struct TokenConfig {
+        uint256 decimals;
+        string name;
+        string symbol;
+    }
+
     struct DeployConfig {
+        address owner;
         bytes32 salt;
+        TokenConfig[] tokens;
     }
 
     address public deployer;
@@ -46,7 +54,7 @@ abstract contract BaseScript is Script {
         deployments[name] = addr;
 
         if (addr.code.length == 0) {
-            require(deployIfMissing, string.concat('MISSING_CONTRACT_', name));
+            require(deployIfMissing, string.concat("MISSING_CONTRACT_", name));
 
             bytes memory bytecode = abi.encodePacked(vm.getCode(name), args);
             bytes32 salt = config.salt;
@@ -66,6 +74,12 @@ abstract contract BaseScript is Script {
         Chain memory chain = getChain(block.chainid);
         string memory key = string.concat(".", chain.chainAlias);
 
-        config.salt = bytes32(json.readUint(string.concat(key, ".salt")));
+        DeployConfig memory _config = abi.decode(json.parseRaw(key), (DeployConfig));
+
+        config.owner = _config.owner;
+        config.salt = _config.salt;
+        for (uint256 i; i < _config.tokens.length; i++) {
+            config.tokens.push(_config.tokens[i]);
+        }
     }
 }
