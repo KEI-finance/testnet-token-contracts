@@ -15,12 +15,13 @@ contract DeployScript is BaseScript {
     function run() public {
         vm.startBroadcast(deployer);
 
-        console.log(deployer.balance);
+        console.log(deployer, deployer.balance);
+        console.log(config.owner);
 
         for (uint256 i; i < config.tokens.length; i++) {
             TokenConfig memory token = config.tokens[i];
             console.log("deploying", token.name, token.symbol, token.decimals);
-            deploy("KEITestToken.sol", abi.encode(token.name, token.symbol, token.decimals.toUint8(), config.owner));
+            console.log(deploy("KEITestToken.sol", abi.encode(token.name, token.symbol, token.decimals.toUint8(), config.owner)));
         }
 
         vm.stopBroadcast();

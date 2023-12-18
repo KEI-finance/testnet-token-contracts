@@ -1,5 +1,5 @@
 {
-  "name": "@kei.fi/contracts-template",
+  "name": "@kei.fi/testnet-token-contracts",
   "version": "0.0.1",
   "author": "KEI finance",
   "license": "UNLICENSED",
@@ -27,7 +27,7 @@
     "typechain:v5": "typechain --target ethers-v6 --out-dir typechain/ethers-v6 \"./out/**/*.json\" --show-stack-traces",
     "typechain:v6": "typechain --target ethers-v5 --out-dir typechain/ethers-v5 \"./out/**/*.json\" --show-stack-traces",
     "typechain": "pnpm typechain:clean && pnpm typechain:v5 && pnpm typechain:v6 && pnpm compile",
-    "prepublish": "forge clean && forge install && forge build && pnpm typechain && forge-utils deployments"
+    "prepublish": "forge clean && forge install && forge build && pnpm typechain"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^11.1.2",

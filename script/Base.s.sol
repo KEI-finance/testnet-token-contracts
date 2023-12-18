@@ -71,10 +71,7 @@ abstract contract BaseScript is Script {
         string memory path = string.concat(root, "/config.json");
         string memory json = vm.readFile(path);
 
-        Chain memory chain = getChain(block.chainid);
-        string memory key = string.concat(".", chain.chainAlias);
-
-        DeployConfig memory _config = abi.decode(json.parseRaw(key), (DeployConfig));
+        DeployConfig memory _config = abi.decode(json.parseRaw(""), (DeployConfig));
 
         config.owner = _config.owner;
         config.salt = _config.salt;

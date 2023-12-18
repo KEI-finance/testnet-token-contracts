@@ -1,23 +1,21 @@
 {
-  "arbitrum_one_goerli": {
-    "owner": "0xd9E4e8BC4887C73E68A81fCf0d4aB0D2db05827b",
-    "salt": 0,
-    "tokens": [
-      {
-        "decimals": 8,
-        "name": "KEI Wrapped BTC",
-        "symbol": "WBTC"
-      },
-      {
-        "decimals": 6,
-        "name": "Tether USD",
-        "symbol": "USDT"
-      },
-      {
-        "decimals": 6,
-        "name": "USD Coin",
-        "symbol": "USDC"
-      }
-    ]
-  }
+  "owner": "0xd9E4e8BC4887C73E68A81fCf0d4aB0D2db05827b",
+  "salt": 0,
+  "tokens": [
+    {
+      "decimals": 8,
+      "name": "KEI Wrapped BTC",
+      "symbol": "WBTC"
+    },
+    {
+      "decimals": 6,
+      "name": "Tether USD",
+      "symbol": "USDT"
+    },
+    {
+      "decimals": 6,
+      "name": "USD Coin",
+      "symbol": "USDC"
+    }
+  ]
 }
